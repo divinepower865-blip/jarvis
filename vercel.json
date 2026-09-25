@@ -1,4 +1,4 @@
 {
-  // Specifies the path to the directory containing the project code
+  Specifies the path to the directory containing the project code
   "rootDirectory": "scripts"
 }
