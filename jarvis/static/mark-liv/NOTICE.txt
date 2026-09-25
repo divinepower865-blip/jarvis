@@ -1,0 +1,11 @@
+JARVIS browser interface adaptation inspired by MARK LIV by FatihMakes.
+Source supplied by the user: Mark-LIV-main.
+MARK LIV license: Creative Commons Attribution-NonCommercial 4.0 International.
+See LICENSE.txt. This adaptation is for personal, noncommercial use.
+
+face_model.obj is copied from Mark LIV. Its source header attributes the geometry
+to MediaPipe's canonical_face_model.obj, Copyright 2019-2023 The MediaPipe Authors,
+Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0
+The geometry is unchanged. Browser rendering and audio-reactive animation are new.
+This browser adaptation does not reproduce Mark LIV's phoneme-based lip-sync,
+Gemini Live engine, wake-word detection, or desktop automation.

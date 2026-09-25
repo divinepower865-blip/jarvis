@@ -1,0 +1,3 @@
+ALTER TABLE jobs ADD COLUMN tool TEXT;
+ALTER TABLE jobs ADD COLUMN arguments TEXT NOT NULL DEFAULT '{}';
+INSERT INTO schema_version VALUES (2);

@@ -1,0 +1,7 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {VoiceOrb} from '../jarvis/static/voice-orb.mjs';
+function setup(reduced=false){const styles={};const env={matchMedia:()=>({matches:reduced}),performance:{now:()=>0},requestAnimationFrame:()=>1,cancelAnimationFrame(){},document:{hidden:false}};const orb=new VoiceOrb({dataset:{},style:{setProperty:(k,v)=>styles[k]=Number(v)}},env);return {orb,styles};}
+test('microphone level expands the orb and decays after listening',async()=>{const {orb,styles}=setup();await orb.start();orb.setState('listening');orb.setLevel(.8);orb.draw(100);assert.ok(styles['--orb-scale']>1);const high=styles['--orb-scale'];orb.setState('thinking');orb.draw(200);assert.ok(styles['--orb-scale']<high);orb.stop();});
+test('reduced motion retains a stable circle',async()=>{const {orb,styles}=setup(true);await orb.start();orb.setState('listening');orb.setLevel(1);orb.draw(100);assert.equal(styles['--orb-scale'],1);assert.equal(styles['--orb-glow'],.25);orb.stop();});
+test('replacing and stopping analysis disconnects only its own branch',()=>{const {orb}=setup();let disconnected=0;const analyser={fftSize:0,disconnect(){},getFloatTimeDomainData(a){a.fill(.2);}};const context={state:'running',createAnalyser:()=>analyser};const source={connect(){},disconnect(node){assert.equal(node,analyser);disconnected++;}};orb.setAudio(context,source);orb.setAudio(context,source);assert.equal(disconnected,1);orb.stop();assert.equal(disconnected,2);});

@@ -1,0 +1,1154 @@
+{
+  "$defs": {
+    "ApprovalRequired": {
+      "additionalProperties": false,
+      "properties": {
+        "approval_id": {
+          "title": "Approval Id",
+          "type": "string"
+        },
+        "expires_at": {
+          "title": "Expires At",
+          "type": "number"
+        },
+        "tool": {
+          "title": "Tool",
+          "type": "string"
+        },
+        "arguments": {
+          "additionalProperties": true,
+          "title": "Arguments",
+          "type": "object"
+        },
+        "digest": {
+          "title": "Digest",
+          "type": "string"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target"
+        },
+        "previous": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous"
+        }
+      },
+      "required": [
+        "approval_id",
+        "expires_at",
+        "tool",
+        "arguments",
+        "digest"
+      ],
+      "title": "ApprovalRequired",
+      "type": "object"
+    },
+    "Approval_Required": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "approval.required",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/ApprovalRequired"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Approval_Required",
+      "type": "object"
+    },
+    "Delta": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "Delta",
+      "type": "object"
+    },
+    "Notification": {
+      "additionalProperties": false,
+      "properties": {
+        "job_id": {
+          "title": "Job Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "content": {
+          "title": "Content",
+          "type": "string"
+        },
+        "scheduled_at": {
+          "title": "Scheduled At",
+          "type": "number"
+        },
+        "late": {
+          "title": "Late",
+          "type": "boolean"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error Code"
+        }
+      },
+      "required": [
+        "job_id",
+        "title",
+        "content",
+        "scheduled_at",
+        "late"
+      ],
+      "title": "Notification",
+      "type": "object"
+    },
+    "Notification_Job_Completed": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "notification.job_completed",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Notification"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Notification_Job_Completed",
+      "type": "object"
+    },
+    "Notification_Job_Failed": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "notification.job_failed",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Notification"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Notification_Job_Failed",
+      "type": "object"
+    },
+    "Notification_Reminder": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "notification.reminder",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Notification"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Notification_Reminder",
+      "type": "object"
+    },
+    "Provider_Retry": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "provider.retry",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Retry"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Provider_Retry",
+      "type": "object"
+    },
+    "Provider_Usage": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "provider.usage",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Usage"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Provider_Usage",
+      "type": "object"
+    },
+    "Response_Delta": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "response.delta",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Delta"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Response_Delta",
+      "type": "object"
+    },
+    "Retry": {
+      "additionalProperties": false,
+      "properties": {
+        "attempt": {
+          "title": "Attempt",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "attempt"
+      ],
+      "title": "Retry",
+      "type": "object"
+    },
+    "Run_Cancelled": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "run.cancelled",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Terminal"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Run_Cancelled",
+      "type": "object"
+    },
+    "Run_Completed": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "run.completed",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Terminal"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Run_Completed",
+      "type": "object"
+    },
+    "Run_Failed": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "run.failed",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Terminal"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Run_Failed",
+      "type": "object"
+    },
+    "Run_Started": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "run.started",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/Started"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Run_Started",
+      "type": "object"
+    },
+    "Started": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "title": "Provider",
+          "type": "string"
+        },
+        "mock": {
+          "title": "Mock",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "provider",
+        "mock"
+      ],
+      "title": "Started",
+      "type": "object"
+    },
+    "Terminal": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "completed",
+            "failed",
+            "cancelled"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result"
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Error Code"
+        }
+      },
+      "required": [
+        "status",
+        "result",
+        "error_code"
+      ],
+      "title": "Terminal",
+      "type": "object"
+    },
+    "ToolCompleted": {
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "title": "Tool",
+          "type": "string"
+        },
+        "call_id": {
+          "title": "Call Id",
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/$defs/ToolResult"
+        }
+      },
+      "required": [
+        "tool",
+        "call_id",
+        "result"
+      ],
+      "title": "ToolCompleted",
+      "type": "object"
+    },
+    "ToolFailed": {
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "title": "Tool",
+          "type": "string"
+        },
+        "call_id": {
+          "title": "Call Id",
+          "type": "string"
+        },
+        "ok": {
+          "const": false,
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "error": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Error",
+          "type": "object"
+        }
+      },
+      "required": [
+        "tool",
+        "call_id",
+        "ok",
+        "error"
+      ],
+      "title": "ToolFailed",
+      "type": "object"
+    },
+    "ToolResult": {
+      "additionalProperties": false,
+      "properties": {
+        "ok": {
+          "default": true,
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Data"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "title": "ToolResult",
+      "type": "object"
+    },
+    "ToolStarted": {
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "title": "Tool",
+          "type": "string"
+        },
+        "call_id": {
+          "title": "Call Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tool",
+        "call_id"
+      ],
+      "title": "ToolStarted",
+      "type": "object"
+    },
+    "Tool_Completed": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "tool.completed",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/ToolCompleted"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Tool_Completed",
+      "type": "object"
+    },
+    "Tool_Failed": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "tool.failed",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/ToolFailed"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Tool_Failed",
+      "type": "object"
+    },
+    "Tool_Started": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "integer"
+        },
+        "event_type": {
+          "const": "tool.started",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "conversation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversation Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Run Id"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "payload": {
+          "$ref": "#/$defs/ToolStarted"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "conversation_id",
+        "run_id",
+        "timestamp",
+        "payload"
+      ],
+      "title": "Tool_Started",
+      "type": "object"
+    },
+    "Usage": {
+      "additionalProperties": false,
+      "properties": {
+        "usage": {
+          "additionalProperties": true,
+          "title": "Usage",
+          "type": "object"
+        }
+      },
+      "required": [
+        "usage"
+      ],
+      "title": "Usage",
+      "type": "object"
+    }
+  },
+  "discriminator": {
+    "mapping": {
+      "approval.required": "#/$defs/Approval_Required",
+      "notification.job_completed": "#/$defs/Notification_Job_Completed",
+      "notification.job_failed": "#/$defs/Notification_Job_Failed",
+      "notification.reminder": "#/$defs/Notification_Reminder",
+      "provider.retry": "#/$defs/Provider_Retry",
+      "provider.usage": "#/$defs/Provider_Usage",
+      "response.delta": "#/$defs/Response_Delta",
+      "run.cancelled": "#/$defs/Run_Cancelled",
+      "run.completed": "#/$defs/Run_Completed",
+      "run.failed": "#/$defs/Run_Failed",
+      "run.started": "#/$defs/Run_Started",
+      "tool.completed": "#/$defs/Tool_Completed",
+      "tool.failed": "#/$defs/Tool_Failed",
+      "tool.started": "#/$defs/Tool_Started"
+    },
+    "propertyName": "event_type"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Run_Started"
+    },
+    {
+      "$ref": "#/$defs/Response_Delta"
+    },
+    {
+      "$ref": "#/$defs/Tool_Started"
+    },
+    {
+      "$ref": "#/$defs/Tool_Completed"
+    },
+    {
+      "$ref": "#/$defs/Tool_Failed"
+    },
+    {
+      "$ref": "#/$defs/Approval_Required"
+    },
+    {
+      "$ref": "#/$defs/Provider_Retry"
+    },
+    {
+      "$ref": "#/$defs/Provider_Usage"
+    },
+    {
+      "$ref": "#/$defs/Run_Completed"
+    },
+    {
+      "$ref": "#/$defs/Run_Failed"
+    },
+    {
+      "$ref": "#/$defs/Run_Cancelled"
+    },
+    {
+      "$ref": "#/$defs/Notification_Reminder"
+    },
+    {
+      "$ref": "#/$defs/Notification_Job_Completed"
+    },
+    {
+      "$ref": "#/$defs/Notification_Job_Failed"
+    }
+  ]
+}
