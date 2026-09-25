@@ -6,6 +6,6 @@
     "build": "node scripts/build-static.cjs"
   },
   "engines": {
-    "node": ">=22",
+    "node": ">=22"
   }
 }
